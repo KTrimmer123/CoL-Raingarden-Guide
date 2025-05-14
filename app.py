@@ -8,7 +8,14 @@ if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
 if not st.session_state.logged_in:
-    st.title("City of London Raingarden Guide")
+    
+col1, col2 = st.columns([1, 1])
+with col1:
+    st.image("col_logo.png", use_column_width="auto")
+with col2:
+    st.image("enginuity_logo.jpg", use_column_width="auto")
+st.title("City of London Raingarden Guide")
+
     st.subheader("Login")
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
@@ -21,7 +28,14 @@ if not st.session_state.logged_in:
     st.stop()
 
 # ---- CALCULATOR ----
+
+col1, col2 = st.columns([1, 1])
+with col1:
+    st.image("col_logo.png", use_column_width="auto")
+with col2:
+    st.image("enginuity_logo.jpg", use_column_width="auto")
 st.title("City of London Raingarden Guide")
+
 
 st.subheader("Input Parameters")
 area = st.number_input("Raingarden Area (m²)", min_value=1.0, value=10.0)

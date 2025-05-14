@@ -8,13 +8,13 @@ if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
 if not st.session_state.logged_in:
-    
-col1, col2 = st.columns([1, 1])
-with col1:
-    st.image("col_logo.png", use_column_width="auto")
-with col2:
-    st.image("enginuity_logo.jpg", use_column_width="auto")
-st.title("City of London Raingarden Guide")
+    st.title("City of London Raingarden Guide")
+
+    col1, col2 = st.columns([1, 1])
+    with col1:
+        st.image("col_logo.png", use_column_width="auto")
+    with col2:
+        st.image("enginuity_logo.jpg", use_column_width="auto")
 
     st.subheader("Login")
     username = st.text_input("Username")
@@ -28,19 +28,17 @@ st.title("City of London Raingarden Guide")
     st.stop()
 
 # ---- CALCULATOR ----
-
-col1, col2 = st.columns([1, 1])
-with col1:
-    st.image("col_logo.png", use_column_width="auto")
-with col2:
-    st.image("enginuity_logo.jpg", use_column_width="auto")
 st.title("City of London Raingarden Guide")
 
-
-st.subheader("Input Parameters")
+st.subheader("Catchment Ratio Check")
 area = st.number_input("Raingarden Area (m²)", min_value=1.0, value=10.0)
 catchment = st.number_input("Catchment Area (m²)", min_value=1.0, value=100.0)
+if area >= 0.1 * catchment:
+    st.success("PASS: Raingarden area is at least 10% of catchment")
+else:
+    st.error("FAIL: Raingarden area is less than 10% of catchment")
 
+st.subheader("Input Parameters")
 void_options = {
     "Coarse Graded Aggregate": 0.3,
     "Hydrorock": 0.4,
@@ -57,15 +55,7 @@ storm_duration = st.selectbox("Storm Duration", ["1hr", "3hr", "6hr"])
 required = get_required_storage(catchment, storm_duration)
 available = calculate_storage(area, void_ratio, depth, freeboard)
 
-
-st.subheader("Catchment Ratio Check")
-if area >= 0.1 * catchment:
-    st.success("PASS: Raingarden area is at least 10% of catchment")
-else:
-    st.error("FAIL: Raingarden area is less than 10% of catchment")
-
 st.subheader("Results")
-
 
 if required:
     st.markdown(f"**Storage Required for {storm_duration} Storm**")

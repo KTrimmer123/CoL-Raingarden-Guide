@@ -43,7 +43,15 @@ storm_duration = st.selectbox("Storm Duration", ["1hr", "3hr", "6hr"])
 required = get_required_storage(catchment, storm_duration)
 available = calculate_storage(area, void_ratio, depth, freeboard)
 
+
+st.subheader("Catchment Ratio Check")
+if area >= 0.1 * catchment:
+    st.success("PASS: Raingarden area is at least 10% of catchment")
+else:
+    st.error("FAIL: Raingarden area is less than 10% of catchment")
+
 st.subheader("Results")
+
 
 if required:
     st.markdown(f"**Storage Required for {storm_duration} Storm**")

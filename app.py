@@ -56,7 +56,6 @@ st.markdown(
         margin-bottom: 2rem;
     }
 
-    /* ✅ Remove the card-like container around inputs */
     div[data-baseweb="input"] {
         background: none !important;
         border: none !important;
@@ -64,7 +63,6 @@ st.markdown(
         padding: 0 !important;
     }
 
-    /* ✅ Keep clean bordered input fields only */
     .stTextInput > div > input {
         border: 2px solid #ccc !important;
         border-radius: 4px !important;
@@ -80,7 +78,6 @@ st.markdown(
         box-shadow: none !important;
     }
 
-    /* Hide 'Press Enter to submit form' message */
     button + p {
         display: none !important;
     }
@@ -125,11 +122,16 @@ if not st.session_state.logged_in:
         else:
             st.error("Incorrect username or password")
 
-    # --- Enginuity Logo ---
+    # --- Enginuity Logo and Attribution ---
     st.markdown(
         """
         <div class='enginuity-logo'>
-            <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/Enginuity_logo.jpg' width='240'/>
+            <div style="text-align: center;">
+                <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/Enginuity_logo.jpg' width='240'/><br>
+                <p style="font-size: 0.85rem; color: #555; margin-top: 0.5rem;">
+                    This tool is the intellectual property of Enginuity and is provided for professional use in support of sustainable drainage and climate-resilient design. It is intended for use by qualified civil engineers.
+                </p>
+            </div>
         </div>
         """,
         unsafe_allow_html=True

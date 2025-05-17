@@ -42,13 +42,20 @@ st.markdown(
         margin-bottom: 0.5rem;
     }
 
-    input:focus {
+    /* Remove Streamlit red borders on error/focus */
+    .stTextInput > div > input {
+        border: 2px solid #ccc !important;
+        border-radius: 4px !important;
+    }
+
+    .stTextInput > div > input:focus {
         border: 2px solid #17E0A7 !important;
         box-shadow: 0 0 0 0.15rem rgba(23, 224, 167, 0.3) !important;
     }
 
-    input:invalid {
-        border-color: #ccc !important;
+    .stTextInput:has(.stTextInput-error) > div > input {
+        border: 2px solid #ccc !important;
+        box-shadow: none !important;
     }
     </style>
     """,

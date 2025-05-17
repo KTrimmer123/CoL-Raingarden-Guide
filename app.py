@@ -103,13 +103,15 @@ with st.expander("Results", expanded=True):
             st.write(f"{label}: {vol:.2f} m³")
 
         st.write(f"Available Volume in Raingarden: {available:.2f} m³")
-
-        with st.expander("Return Period Check", expanded=True):
-            result = pass_fail(required, available)
-            for label, verdict in result.items():
-                if verdict == "PASS":
-                    st.success(f"{label}: PASS")
-                else:
-                    st.error(f"{label}: FAIL")
     else:
         st.warning("Catchment size too large for FEH table.")
+
+# --- RETURN PERIOD CHECK (not nested) ---
+if required:
+    with st.expander("Return Period Check", expanded=True):
+        result = pass_fail(required, available)
+        for label, verdict in result.items():
+            if verdict == "PASS":
+                st.success(f"{label}: PASS")
+            else:
+                st.error(f"{label}: FAIL")

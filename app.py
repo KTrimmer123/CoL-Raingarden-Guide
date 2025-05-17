@@ -3,13 +3,11 @@ from calculator import calculate_storage, get_required_storage, pass_fail
 
 st.set_page_config(page_title="City of London Raingarden Guide", page_icon="💧")
 
-# --- Track login state ---
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
-# --- CSS styles based on login state ---
+# --- CSS based on login state ---
 if not st.session_state.logged_in:
-    # GREEN focus styling for login page
     st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@500;700&display=swap');
@@ -27,6 +25,10 @@ if not st.session_state.logged_in:
         border-radius: 4px !important;
         box-shadow: none !important;
     }
+    div[data-baseweb="input"]:hover {
+        border: 2px solid #17E0A7 !important;
+        box-shadow: 0 0 0 0.15rem rgba(23, 224, 167, 0.2) !important;
+    }
     div[data-baseweb="input"]:focus-within {
         border: 2px solid #17E0A7 !important;
         box-shadow: 0 0 0 0.15rem rgba(23, 224, 167, 0.3) !important;
@@ -34,7 +36,6 @@ if not st.session_state.logged_in:
     </style>
     """, unsafe_allow_html=True)
 else:
-    # NO focus styling for calculator page
     st.markdown("""
     <style>
     html, body, [class*="css"] { font-family: 'Montserrat', sans-serif; }
@@ -48,6 +49,10 @@ else:
         border: 2px solid #ccc !important;
         border-radius: 4px !important;
         box-shadow: none !important;
+    }
+    div[data-baseweb="input"]:hover {
+        border: 2px solid #17E0A7 !important;
+        box-shadow: 0 0 0 0.15rem rgba(23, 224, 167, 0.2) !important;
     }
     div[data-baseweb="input"]:focus-within {
         border: 2px solid #ccc !important;

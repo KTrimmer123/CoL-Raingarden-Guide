@@ -88,7 +88,7 @@ if not st.session_state.logged_in:
     st.markdown(
         """
         <div class='centered-logo'>
-            <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/City_of_London_logo.svg.png' width='300'/>
+            <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/City_of_London_logo.svg.png' width='450'/>
         </div>
         """,
         unsafe_allow_html=True

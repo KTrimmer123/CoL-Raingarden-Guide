@@ -1,5 +1,4 @@
 import streamlit as st
-import base64
 from calculator import calculate_storage, get_required_storage, pass_fail
 
 st.set_page_config(page_title="City of London Raingarden Guide", page_icon="💧")
@@ -34,14 +33,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# --- Function to embed SVG logo ---
-def render_svg(svg_path):
-    with open(svg_path, "r") as f:
-        svg = f.read()
-    b64 = base64.b64encode(svg.encode("utf-8")).decode("utf-8")
-    html = f'<img src="data:image/svg+xml;base64,{b64}" width="150"/>'
-    st.markdown(html, unsafe_allow_html=True)
-
 # --- SIMPLE LOGIN ---
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
@@ -60,7 +51,7 @@ if not st.session_state.logged_in:
     st.stop()
 
 # --- LOGO + TOOL TITLE ---
-render_svg("assets/city_of_london_logo.svg")
+st.image("assets/City_of_London_logo.svg.png", width=150)
 st.title("City of London Raingarden Guide")
 
 # --- CALCULATOR ---

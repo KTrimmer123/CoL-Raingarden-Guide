@@ -62,6 +62,14 @@ st.markdown(
         align-items: center;
     }
 
+    /* Remove box around entire input fields */
+    .stTextInput {
+        background: none !important;
+        border: none !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+
     .stTextInput > div > input {
         border: 2px solid #ccc !important;
         border-radius: 4px !important;
@@ -122,7 +130,7 @@ if not st.session_state.logged_in:
         else:
             st.error("Incorrect username or password")
 
-    # --- Enginuity Logo (JPG, now 240px wide) ---
+    # --- Enginuity Logo ---
     st.markdown(
         """
         <div class='enginuity-logo'>

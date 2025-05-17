@@ -97,7 +97,6 @@ if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
 if not st.session_state.logged_in:
-    # City of London logo
     st.markdown(
         """
         <div class='centered-logo'>
@@ -107,7 +106,6 @@ if not st.session_state.logged_in:
         unsafe_allow_html=True
     )
 
-    # Main heading
     st.markdown(
         """
         <div class='login-heading'>
@@ -117,7 +115,6 @@ if not st.session_state.logged_in:
         unsafe_allow_html=True
     )
 
-    # Login form
     with st.form("login_form"):
         st.text_input("Username", key="username")
         st.text_input("Password", type="password", key="password")
@@ -131,7 +128,6 @@ if not st.session_state.logged_in:
         else:
             st.error("Incorrect username or password")
 
-    # Enginuity logo + attribution
     st.markdown(
         """
         <div class='enginuity-logo'>
@@ -168,9 +164,22 @@ with st.expander("Input Parameters", expanded=True):
     freeboard = st.selectbox("Freeboard (mm)", [150, 200, 250])
     storm_duration = st.selectbox("Storm Duration", ["1hr", "3hr", "6hr"])
 
+    include_infiltration = st.checkbox("Include infiltration in storage calculation", value=False)
+
 # --- CALCULATIONS ---
 required = get_required_storage(catchment, storm_duration)
 available = calculate_storage(area, void_ratio, depth, freeboard)
+
+# --- Modify required storage if infiltration is included ---
+infiltration_rate = 0.036  # m/hr
+storm_durations_hrs = {"1hr": 1, "3hr": 3, "6hr": 6}
+
+if required and include_infiltration:
+    duration_hr = storm_durations_hrs[storm_duration]
+    infiltrated_volume = infiltration_rate * area * duration_hr  # m³
+
+    for key in required:
+        required[key] = max(required[key] - infiltrated_volume, 0)
 
 # --- CATCHMENT CHECK ---
 with st.expander("Catchment Ratio Check", expanded=True):

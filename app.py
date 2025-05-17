@@ -28,7 +28,6 @@ st.markdown(
         max-width: 100% !important;
         padding-left: 2rem !important;
         padding-right: 2rem !important;
-        text-align: left !important;
     }
 
     .stMetric {
@@ -51,7 +50,12 @@ st.markdown(
         margin-bottom: 2rem;
     }
 
-    /* Remove Streamlit red borders on error/focus */
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .stTextInput > div > input {
         border: 2px solid #ccc !important;
         border-radius: 4px !important;
@@ -67,8 +71,8 @@ st.markdown(
         box-shadow: none !important;
     }
 
-    /* Hide 'Press Enter to submit form' text */
-    .stFormSubmitButton > div > p {
+    /* Hide 'Press Enter to submit form' message */
+    button + p {
         display: none !important;
     }
     </style>
@@ -99,12 +103,13 @@ if not st.session_state.logged_in:
     )
 
     with st.form("login_form"):
-        username = st.text_input("Username", label_visibility="visible")
-        password = st.text_input("Password", type="password", label_visibility="visible")
-        submitted = st.form_submit_button("Login")
+        with st.container():
+            st.text_input("Username", key="username")
+            st.text_input("Password", type="password", key="password")
+            submitted = st.form_submit_button("Login")
 
     if submitted:
-        if username == "city_of_london_rg_tool" and password == "SuDSnotfloods!":
+        if st.session_state.username == "city_of_london_rg_tool" and st.session_state.password == "SuDSnotfloods!":
             st.session_state.logged_in = True
             st.success("Login successful! Loading tool...")
             st.rerun()

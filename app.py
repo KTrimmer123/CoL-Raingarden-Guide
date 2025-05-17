@@ -18,10 +18,10 @@ st.markdown(
         font-weight: 600 !important;
     }
 
-    .streamlit-expanderHeader {
+    .streamlit-expanderHeader > div {
         font-family: 'Poppins', sans-serif !important;
         font-weight: 600 !important;
-        font-size: 1.1rem !important;
+        font-size: 1.15rem !important;
     }
 
     .main .block-container {

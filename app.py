@@ -28,6 +28,7 @@ if not st.session_state.logged_in:
     div[data-baseweb="input"]:hover {
         border: 2px solid #17E0A7 !important;
         box-shadow: 0 0 0 0.15rem rgba(23, 224, 167, 0.2) !important;
+        transition: all 0.2s ease-in-out;
     }
     div[data-baseweb="input"]:focus-within {
         border: 2px solid #17E0A7 !important;

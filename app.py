@@ -81,7 +81,7 @@ st.markdown(
         border-radius: 4px !important;
     }
 
-    input:focus, textarea:focus {
+    input:focus, select:focus, textarea:focus {
         outline: none !important;
         border: 2px solid #17E0A7 !important;
         box-shadow: 0 0 0 0.15rem rgba(23, 224, 167, 0.3) !important;

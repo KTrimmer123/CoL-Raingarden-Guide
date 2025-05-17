@@ -90,7 +90,7 @@ if required:
     st.metric("Available Volume in Raingarden", f"{available:.2f} m³")
 
     result = pass_fail(required, available)
-    st.subheader("Attenuation Avaliable")
+    st.subheader("Return Period Check")
     for label, verdict in result.items():
         if verdict == "PASS":
             st.success(f"{label}: PASS")

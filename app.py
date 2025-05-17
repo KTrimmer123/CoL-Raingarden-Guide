@@ -56,20 +56,15 @@ st.markdown(
         margin-bottom: 2rem;
     }
 
-    .login-form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    /* Remove box around entire input fields */
-    .stTextInput {
+    /* ✅ Remove the card-like container around inputs */
+    div[data-baseweb="input"] {
         background: none !important;
         border: none !important;
-        padding: 0 !important;
         box-shadow: none !important;
+        padding: 0 !important;
     }
 
+    /* ✅ Keep clean bordered input fields only */
     .stTextInput > div > input {
         border: 2px solid #ccc !important;
         border-radius: 4px !important;

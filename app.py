@@ -81,15 +81,11 @@ st.markdown(
         border-radius: 4px !important;
     }
 
-    .stTextInput > div > input:focus {
-        border: 2px solid #17E0A7 !important;
-        box-shadow: 0 0 0 0.15rem rgba(23, 224, 167, 0.3) !important;
-    }
-
-    input:focus {
+    input:focus, textarea:focus {
         outline: none !important;
         border: 2px solid #17E0A7 !important;
         box-shadow: 0 0 0 0.15rem rgba(23, 224, 167, 0.3) !important;
+        transition: all 0.2s ease-in-out;
     }
 
     .stTextInput:has(.stTextInput-error) > div > input {

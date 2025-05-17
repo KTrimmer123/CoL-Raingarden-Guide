@@ -16,7 +16,7 @@ st.markdown(
     h1 {
         font-family: 'Poppins', sans-serif !important;
         font-weight: 600 !important;
-        font-size: 1.75rem !important;
+        font-size: 1.9rem !important;
         text-align: center;
     }
 
@@ -155,7 +155,7 @@ if not st.session_state.logged_in:
 st.title("City of London Raingarden Guide")
 
 # --- INPUT SECTION ---
-with st.expander("Input Parameters", expanded=True):
+with st.expander("Input Parameters", expanded=False):
     area = st.number_input("Raingarden Area (m²)", min_value=1, value=10, step=1, format="%d")
     catchment = st.number_input("Catchment Area (m²)", min_value=1, value=100, step=1, format="%d")
 
@@ -189,14 +189,14 @@ if required and include_infiltration:
         required[key] = max(required[key] - infiltrated_volume, 0)
 
 # --- CATCHMENT CHECK ---
-with st.expander("Catchment Ratio Check", expanded=True):
+with st.expander("Catchment Ratio Check", expanded=False):
     if area >= 0.1 * catchment:
         st.success("PASS: Raingarden area is at least 10% of catchment")
     else:
         st.error("FAIL: Raingarden area is less than 10% of catchment")
 
 # --- RESULTS SECTION ---
-with st.expander("Results", expanded=True):
+with st.expander("Results", expanded=False):
     if required:
         st.markdown(f"**Storage Required for {storm_duration} Storm**")
         for label, vol in required.items():
@@ -208,7 +208,7 @@ with st.expander("Results", expanded=True):
 
 # --- RETURN PERIOD CHECK ---
 if required:
-    with st.expander("Return Period Check", expanded=True):
+    with st.expander("Return Period Check", expanded=False):
         result = pass_fail(required, available)
         for label, verdict in result.items():
             if verdict == "PASS":

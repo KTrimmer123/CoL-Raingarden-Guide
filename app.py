@@ -13,7 +13,14 @@ st.markdown(
         font-family: 'Montserrat', sans-serif;
     }
 
-    h1, h2, h3, h4, h5, h6 {
+    h1 {
+        font-family: 'Poppins', sans-serif !important;
+        font-weight: 600 !important;
+        font-size: 1.75rem !important;
+        text-align: center;
+    }
+
+    h2, h3, h4, h5, h6 {
         font-family: 'Poppins', sans-serif !important;
         font-weight: 600 !important;
     }
@@ -170,7 +177,7 @@ with st.expander("Input Parameters", expanded=True):
 required = get_required_storage(catchment, storm_duration)
 available = calculate_storage(area, void_ratio, depth, freeboard)
 
-# --- Modify required storage if infiltration is included ---
+# --- Apply infiltration if selected ---
 infiltration_rate = 0.036  # m/hr
 storm_durations_hrs = {"1hr": 1, "3hr": 3, "6hr": 6}
 

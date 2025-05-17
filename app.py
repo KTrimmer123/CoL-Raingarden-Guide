@@ -66,7 +66,9 @@ void_options = {
 void_label = st.selectbox("Attenuation Form", list(void_options.keys()))
 void_ratio = void_options[void_label]
 
-depth = st.number_input("Attenuation Depth (mm)", min_value=0.0, value=300.0)
+# Updated: whole number, 5 mm step
+depth = st.number_input("Attenuation Depth (mm)", min_value=0, value=300, step=5, format="%d")
+
 freeboard = st.selectbox("Freeboard (mm)", [150, 200, 250])
 storm_duration = st.selectbox("Storm Duration", ["1hr", "3hr", "6hr"])
 
@@ -85,17 +87,4 @@ st.subheader("Results")
 if required:
     st.markdown(f"**Storage Required for {storm_duration} Storm**")
     for label, vol in required.items():
-        st.write(f"{label}: {vol:.2f} m³")
-
-    st.markdown("### Available Volume in Raingarden")
-    st.metric(label="", value=f"{available:.2f} m³")
-
-    result = pass_fail(required, available)
-    st.subheader("Return Period Check")
-    for label, verdict in result.items():
-        if verdict == "PASS":
-            st.success(f"{label}: PASS")
-        else:
-            st.error(f"{label}: FAIL")
-else:
-    st.warning("Catchment size too large for FEH table.")
+        st.write(f"{label}:

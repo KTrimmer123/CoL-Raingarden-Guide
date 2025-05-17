@@ -59,7 +59,7 @@ if not st.session_state.logged_in:
         unsafe_allow_html=True
     )
     st.markdown("<h1 style='text-align: center;'>City of London Raingarden Guide</h1>", unsafe_allow_html=True)
-    st.subheader("Login")
+    
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
     if username == "city_of_london_rg_tool" and password == "SuDSnotfloods!":

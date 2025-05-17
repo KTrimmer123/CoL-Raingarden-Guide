@@ -37,7 +37,7 @@ st.markdown(
     .centered-logo {
         display: flex;
         justify-content: center;
-        margin-top: -1rem;
+        margin-top: -2.5rem;
         margin-bottom: 0.5rem;
     }
 
@@ -88,7 +88,7 @@ if not st.session_state.logged_in:
     st.markdown(
         """
         <div class='centered-logo'>
-            <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/City_of_London_logo.svg.png' width='450'/>
+            <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/City_of_London_logo.svg.png' width='225'/>
         </div>
         """,
         unsafe_allow_html=True

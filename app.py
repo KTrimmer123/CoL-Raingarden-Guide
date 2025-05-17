@@ -18,6 +18,12 @@ st.markdown(
         font-weight: 600 !important;
     }
 
+    .streamlit-expanderHeader {
+        font-family: 'Poppins', sans-serif !important;
+        font-weight: 600 !important;
+        font-size: 1.1rem !important;
+    }
+
     .main .block-container {
         max-width: 100% !important;
         padding-left: 2rem !important;
@@ -106,7 +112,7 @@ with st.expander("Results", expanded=True):
     else:
         st.warning("Catchment size too large for FEH table.")
 
-# --- RETURN PERIOD CHECK (not nested) ---
+# --- RETURN PERIOD CHECK ---
 if required:
     with st.expander("Return Period Check", expanded=True):
         result = pass_fail(required, available)

@@ -51,7 +51,14 @@ if not st.session_state.logged_in:
     st.stop()
 
 # --- LOGO + TOOL TITLE ---
-st.image("assets/City_of_London_logo.svg.png", width=150)
+st.markdown(
+    """
+    <div style='text-align: center;'>
+        <img src='assets/City_of_London_logo.svg.png' width='300'/>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 st.title("City of London Raingarden Guide")
 
 # --- CALCULATOR ---

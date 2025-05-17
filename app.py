@@ -16,6 +16,12 @@ if not st.session_state.logged_in:
     html, body, [class*="css"] { font-family: 'Montserrat', sans-serif; }
     h1 { font-family: 'Poppins', sans-serif !important; font-size: 1.9rem !important; text-align: center; font-weight: 600 !important; }
     .login-heading { text-align: center; font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 600; margin-bottom: 2rem; }
+    .centered-logo {
+        display: flex;
+        justify-content: center;
+        margin-top: -2rem;
+        margin-bottom: 1.25rem;
+    }
     div[data-baseweb="input"] {
         border: 2px solid #ccc !important;
         border-radius: 4px !important;
@@ -97,7 +103,6 @@ with st.expander("Input Parameters", expanded=False):
     area = st.number_input("Raingarden Area (m²)", min_value=1, value=10, step=1, format="%d")
     catchment = st.number_input("Catchment Area (m²)", min_value=1, value=100, step=1, format="%d")
 
-    # UPDATED VOID RATIOS
     void_options = {
         "Coarse Graded Aggregate": 0.3,
         "Hydrorock": 0.94,

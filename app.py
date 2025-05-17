@@ -153,8 +153,8 @@ st.title("City of London Raingarden Guide")
 
 # --- INPUT SECTION ---
 with st.expander("Input Parameters", expanded=True):
-    area = st.number_input("Raingarden Area (m²)", min_value=1.0, value=10.0)
-    catchment = st.number_input("Catchment Area (m²)", min_value=1.0, value=100.0)
+    area = st.number_input("Raingarden Area (m²)", min_value=1, value=10, step=1, format="%d")
+    catchment = st.number_input("Catchment Area (m²)", min_value=1, value=100, step=1, format="%d")
 
     void_options = {
         "Coarse Graded Aggregate": 0.3,

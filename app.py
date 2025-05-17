@@ -3,14 +3,26 @@ from calculator import calculate_storage, get_required_storage, pass_fail
 
 st.set_page_config(page_title="City of London Raingarden Guide", page_icon="💧")
 
-# Left-align everything with padding
+# Stronger left-align styling for all app content
 st.markdown(
     """
     <style>
-    .block-container {
-        text-align: left;
-        padding-left: 2rem;
-        padding-right: 2rem;
+    /* Force main container to left-align */
+    .main .block-container {
+        max-width: 100% !important;
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+        text-align: left !important;
+    }
+
+    /* Align headers */
+    h1, h2, h3, h4 {
+        text-align: left !important;
+    }
+
+    /* Align metric outputs */
+    .stMetric {
+        text-align: left !important;
     }
     </style>
     """,
@@ -29,16 +41,3 @@ if not st.session_state.logged_in:
     if username == "city_of_london_rg_tool" and password == "SuDSnotfloods!":
         st.session_state.logged_in = True
         st.success("Login successful! Loading tool...")
-        st.rerun()
-    elif username and password:
-        st.error("Incorrect username or password")
-    st.stop()
-
-# ---- CALCULATOR ----
-st.title("City of London Raingarden Guide")
-
-st.subheader("Input Parameters")
-area = st.number_input("Raingarden Area (m²)", min_value=1.0, value=10.0)
-catchment = st.number_input("Catchment Area (m²)", min_value=1.0, value=100.0)
-
-void_options = {

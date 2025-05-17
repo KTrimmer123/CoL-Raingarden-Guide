@@ -87,4 +87,5 @@ st.subheader("Results")
 if required:
     st.markdown(f"**Storage Required for {storm_duration} Storm**")
     for label, vol in required.items():
-        st.write(f"{label}:
+ st.write(f"{label}: {vol:.2f} m³")
+

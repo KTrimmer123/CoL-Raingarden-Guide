@@ -115,6 +115,17 @@ if not st.session_state.logged_in:
             st.rerun()
         else:
             st.error("Incorrect username or password")
+
+    # --- Enginuity Logo ---
+    st.markdown(
+        """
+        <div class='centered-logo'>
+            <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/Enginuity_logo.jpeg' width='160'/>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
     st.stop()
 
 # --- TOOL TITLE AFTER LOGIN ---

@@ -40,18 +40,7 @@ else:
     st.markdown("""
     <style>
     html, body, [class*="css"] { font-family: 'Montserrat', sans-serif; }
-    .sticky-header {
-        position: sticky;
-        top: 0;
-        background: white;
-        z-index: 999;
-        padding: 0.5rem 1rem;
-        border-bottom: 1px solid #ddd;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 600;
-        font-size: 1.2rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-    }
+    h1 { font-family: 'Poppins', sans-serif !important; font-size: 1.9rem !important; text-align: center; font-weight: 600 !important; }
     .streamlit-expanderHeader > div {
         font-family: 'Poppins', sans-serif !important;
         font-weight: 600 !important;
@@ -114,9 +103,8 @@ if not st.session_state.logged_in:
     st.stop()
 
 # --- CALCULATOR PAGE ---
-st.markdown("<div class='sticky-header'>City of London Raingarden Guide</div>", unsafe_allow_html=True)
+st.title("City of London Raingarden Guide")
 
-st.markdown("---")
 with st.expander("Input Parameters", expanded=False):
     area = st.number_input("Raingarden Area (m²)", min_value=1, value=10, step=1, format="%d")
     catchment = st.number_input("Catchment Area (m²)", min_value=1, value=100, step=1, format="%d")
@@ -145,14 +133,12 @@ if required and include_infiltration:
     for key in required:
         required[key] = max(required[key] - infiltrated_volume, 0)
 
-st.markdown("---")
 with st.expander("Catchment Ratio Check", expanded=False):
     if area >= 0.1 * catchment:
         st.success("PASS: Raingarden area is at least 10% of catchment")
     else:
         st.error("FAIL: Raingarden area is less than 10% of catchment")
 
-st.markdown("---")
 with st.expander("Results", expanded=False):
     if required:
         st.markdown(f"**Storage Required for {storm_duration} Storm**")
@@ -162,7 +148,6 @@ with st.expander("Results", expanded=False):
     else:
         st.warning("Catchment size too large for FEH table.")
 
-st.markdown("---")
 if required:
     with st.expander("Return Period Check", expanded=False):
         result = pass_fail(required, available)

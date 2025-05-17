@@ -159,10 +159,8 @@ else:
 # --- EXPORT SECTION ---
 if required:
     st.markdown("### Export Results")
-
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
 
-    # Excel Export
     df = pd.DataFrame({
         "Storm Duration": [storm_duration],
         "Catchment Area (m²)": [catchment],
@@ -183,15 +181,15 @@ if required:
     buffer = io.BytesIO()
     with pd.ExcelWriter(buffer, engine="xlsxwriter") as writer:
         df.to_excel(writer, index=False, sheet_name="Raingarden Results")
-        writer.save()
-        st.download_button(
-            label="📥 Download Excel",
-            data=buffer,
-            file_name=f"raingarden_results_{timestamp}.xlsx",
-            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        )
 
-    # PDF Export
+    st.download_button(
+        label="📥 Download Excel",
+        data=buffer.getvalue(),
+        file_name=f"raingarden_results_{timestamp}.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
+
+    # PDF export
     pdf = FPDF()
     pdf.add_page()
     pdf.set_font("Arial", "B", 14)

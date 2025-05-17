@@ -86,6 +86,12 @@ st.markdown(
         box-shadow: 0 0 0 0.15rem rgba(23, 224, 167, 0.3) !important;
     }
 
+    input:focus {
+        outline: none !important;
+        border: 2px solid #17E0A7 !important;
+        box-shadow: 0 0 0 0.15rem rgba(23, 224, 167, 0.3) !important;
+    }
+
     .stTextInput:has(.stTextInput-error) > div > input {
         border: 2px solid #ccc !important;
         box-shadow: none !important;

@@ -67,7 +67,7 @@ void_label = st.selectbox("Attenuation Form", list(void_options.keys()))
 void_ratio = void_options[void_label]
 
 # Updated: whole number, 5 mm step
-depth = st.number_input("Attenuation Depth (mm)", min_value=0, value=300, step=5, format="%d")
+depth = int(st.number_input("Attenuation Depth (mm)", min_value=0, value=300, step=5, format="%d"))
 
 freeboard = st.selectbox("Freeboard (mm)", [150, 200, 250])
 storm_duration = st.selectbox("Storm Duration", ["1hr", "3hr", "6hr"])

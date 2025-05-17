@@ -38,14 +38,14 @@ st.markdown(
         display: flex;
         justify-content: center;
         margin-top: -2.5rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: 1.25rem;
     }
 
     .login-heading {
         text-align: center;
         font-family: 'Poppins', sans-serif;
         font-weight: 600;
-        font-size: 2.2rem;
+        font-size: 2.5rem;
         line-height: 1.4;
         margin-bottom: 2rem;
     }

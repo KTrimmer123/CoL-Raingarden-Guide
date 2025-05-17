@@ -60,9 +60,9 @@ if not st.session_state.logged_in:
     )
     st.markdown(
         """
-        <h1 style='text-align: center; font-family: Poppins, sans-serif; font-weight: 600; line-height: 1.3;'>
+        <div style='text-align: center; font-family: Poppins, sans-serif; font-weight: 600; font-size: 2.2rem; line-height: 1.4;'>
             City of London<br>Raingarden Guide
-        </h1>
+        </div>
         """,
         unsafe_allow_html=True
     )

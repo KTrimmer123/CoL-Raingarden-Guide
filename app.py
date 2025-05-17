@@ -81,11 +81,16 @@ st.markdown(
         border-radius: 4px !important;
     }
 
-    input:focus, select:focus, textarea:focus {
+    input:focus-visible {
         outline: none !important;
         border: 2px solid #17E0A7 !important;
         box-shadow: 0 0 0 0.15rem rgba(23, 224, 167, 0.3) !important;
-        transition: all 0.2s ease-in-out;
+    }
+
+    .stNumberInput input:focus {
+        outline: none !important;
+        border: 2px solid #17E0A7 !important;
+        box-shadow: 0 0 0 0.15rem rgba(23, 224, 167, 0.3) !important;
     }
 
     .stTextInput:has(.stTextInput-error) > div > input {

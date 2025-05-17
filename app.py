@@ -56,6 +56,16 @@ st.markdown(
         margin-bottom: 2rem;
     }
 
+    /* New full-page login layout to prevent scrollbars */
+    .login-wrapper {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
     div[data-baseweb="input"] {
         background: none !important;
         border: none !important;
@@ -91,51 +101,56 @@ if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
 if not st.session_state.logged_in:
-    st.markdown(
-        """
-        <div class='centered-logo'>
-            <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/City_of_London_logo.svg.png' width='300'/>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-    st.markdown(
-        """
-        <div class='login-heading'>
-            City of London<br>Raingarden Guide
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    with st.container():
+        st.markdown("<div class='login-wrapper'>", unsafe_allow_html=True)
 
-    with st.form("login_form"):
-        with st.container():
-            st.text_input("Username", key="username")
-            st.text_input("Password", type="password", key="password")
-            submitted = st.form_submit_button("Login")
-
-    if submitted:
-        if st.session_state.username == "city_of_london_rg_tool" and st.session_state.password == "SuDSnotfloods!":
-            st.session_state.logged_in = True
-            st.success("Login successful! Loading tool...")
-            st.rerun()
-        else:
-            st.error("Incorrect username or password")
-
-    # --- Enginuity Logo and Attribution ---
-    st.markdown(
-        """
-        <div class='enginuity-logo'>
-            <div style="text-align: center;">
-                <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/Enginuity_logo.jpg' width='240'/><br>
-                <p style="font-size: 0.85rem; color: #555; margin-top: 0.5rem;">
-                    This tool is the intellectual property of Enginuity and is provided for professional use in support of sustainable drainage and climate-resilient design. It is intended for use by qualified civil engineers.
-                </p>
+        st.markdown(
+            """
+            <div class='centered-logo'>
+                <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/City_of_London_logo.svg.png' width='300'/>
             </div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+            """,
+            unsafe_allow_html=True
+        )
+        st.markdown(
+            """
+            <div class='login-heading'>
+                City of London<br>Raingarden Guide
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+        with st.form("login_form"):
+            with st.container():
+                st.text_input("Username", key="username")
+                st.text_input("Password", type="password", key="password")
+                submitted = st.form_submit_button("Login")
+
+        if submitted:
+            if st.session_state.username == "city_of_london_rg_tool" and st.session_state.password == "SuDSnotfloods!":
+                st.session_state.logged_in = True
+                st.success("Login successful! Loading tool...")
+                st.rerun()
+            else:
+                st.error("Incorrect username or password")
+
+        # --- Enginuity Logo and Attribution ---
+        st.markdown(
+            """
+            <div class='enginuity-logo'>
+                <div style="text-align: center;">
+                    <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/Enginuity_logo.jpg' width='240'/><br>
+                    <p style="font-size: 0.85rem; color: #555; margin-top: 0.5rem;">
+                        This tool is the intellectual property of Enginuity and is provided for professional use in support of sustainable drainage and climate-resilient design. It is intended for use by qualified civil engineers.
+                    </p>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+        st.markdown("</div>", unsafe_allow_html=True)
 
     st.stop()
 

@@ -88,8 +88,8 @@ if required:
     for label, vol in required.items():
         st.write(f"{label}: {vol:.2f} m³")
 
-    st.markdown("### Available Volume in Raingarden")
-    st.metric(label="", value=f"{available:.2f} m³")
+    # Updated: styled like other text lines, not as heading or metric
+    st.write(f"Available Volume in Raingarden: {available:.2f} m³")
 
     result = pass_fail(required, available)
     st.subheader("Return Period Check")

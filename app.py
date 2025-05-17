@@ -69,9 +69,8 @@ st.markdown(
         margin-bottom: 2rem;
     }
 
-    /* INPUT STYLING OVERRIDES */
+    /* === FOCUS & BORDER OVERRIDES === */
 
-    /* Reset orange focus */
     div[data-baseweb="input"] {
         box-shadow: none !important;
         border: 2px solid #ccc !important;
@@ -79,9 +78,20 @@ st.markdown(
     }
 
     div[data-baseweb="input"]:focus-within {
+        box-shadow: 0 0 0 0.15rem rgba(23, 224, 167, 0.3) !important;
+        border: 2px solid #17E0A7 !important;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .stNumberInput input:focus {
+        outline: none !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+
+    .stSelectbox:focus-within {
         border: 2px solid #17E0A7 !important;
         box-shadow: 0 0 0 0.15rem rgba(23, 224, 167, 0.3) !important;
-        transition: all 0.2s ease-in-out;
     }
 
     .stTextInput:has(.stTextInput-error) > div > input {

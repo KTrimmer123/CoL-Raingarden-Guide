@@ -116,11 +116,11 @@ if not st.session_state.logged_in:
         else:
             st.error("Incorrect username or password")
 
-    # --- Enginuity Logo ---
+    # --- Enginuity Logo (JPG) ---
     st.markdown(
         """
         <div class='centered-logo'>
-            <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/Enginuity_logo.jpeg' width='160'/>
+            <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/Enginuity_logo.jpg' width='160'/>
         </div>
         """,
         unsafe_allow_html=True

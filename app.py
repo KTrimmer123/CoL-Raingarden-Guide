@@ -83,14 +83,19 @@ if not st.session_state.logged_in:
         """,
         unsafe_allow_html=True
     )
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
-    if username == "city_of_london_rg_tool" and password == "SuDSnotfloods!":
-        st.session_state.logged_in = True
-        st.success("Login successful! Loading tool...")
-        st.rerun()
-    elif username and password:
-        st.error("Incorrect username or password")
+
+    with st.form("login_form"):
+        username = st.text_input("Username", label_visibility="visible")
+        password = st.text_input("Password", type="password", label_visibility="visible")
+        submitted = st.form_submit_button("Login")
+
+    if submitted:
+        if username == "city_of_london_rg_tool" and password == "SuDSnotfloods!":
+            st.session_state.logged_in = True
+            st.success("Login successful! Loading tool...")
+            st.rerun()
+        else:
+            st.error("Incorrect username or password")
     st.stop()
 
 # --- TOOL TITLE AFTER LOGIN ---

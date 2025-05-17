@@ -28,6 +28,12 @@ st.markdown(
     .stMetric {
         text-align: left !important;
     }
+
+    .centered-logo {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -51,10 +57,14 @@ if not st.session_state.logged_in:
     st.stop()
 
 # --- LOGO + TOOL TITLE ---
-st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
-st.image("assets/City_of_London_logo.svg.png", width=300)
-st.markdown("</div>", unsafe_allow_html=True)
-
+st.markdown(
+    """
+    <div class='centered-logo'>
+        <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/City_of_London_logo.svg.png' width='300'/>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 st.title("City of London Raingarden Guide")
 
 # --- CALCULATOR ---

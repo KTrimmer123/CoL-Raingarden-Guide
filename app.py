@@ -44,7 +44,7 @@ st.markdown(
     .enginuity-logo {
         display: flex;
         justify-content: center;
-        margin-top: 2rem;
+        margin-top: 1rem;
     }
 
     .login-heading {

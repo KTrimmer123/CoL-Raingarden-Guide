@@ -80,14 +80,15 @@ if area >= 0.1 * catchment:
 else:
     st.error("FAIL: Raingarden area is less than 10% of catchment")
 
-st.subheader("Attenuation Required")
+st.subheader("Results")
 
 if required:
     st.markdown(f"**Storage Required for {storm_duration} Storm**")
     for label, vol in required.items():
         st.write(f"{label}: {vol:.2f} m³")
 
-    st.metric("Available Volume in Raingarden", f"{available:.2f} m³")
+    st.markdown("### Available Volume in Raingarden")
+    st.metric(label="", value=f"{available:.2f} m³")
 
     result = pass_fail(required, available)
     st.subheader("Return Period Check")

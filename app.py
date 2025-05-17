@@ -88,7 +88,7 @@ if not st.session_state.logged_in:
         <div style="text-align: center;">
             <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/Enginuity_logo.jpg' width='240'/><br>
             <p style="font-size: 0.85rem; color: #555; margin-top: 0.5rem;">
-                This tool is the intellectual property of Enginuity and is provided for professional use in support of sustainable drainage and climate-resilient design. It is intended for use by qualified civil engineers.
+                This tool is the intellectual property of the Enginuity Collective and is provided for professional use in support of sustainable drainage and climate-resilient design. It is intended for use by qualified civil engineers.
             </p>
         </div>
     </div>

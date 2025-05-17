@@ -42,6 +42,15 @@ st.markdown(
         margin-bottom: 0.5rem;
     }
 
+    .login-heading {
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 2.2rem;
+        line-height: 1.4;
+        margin-bottom: 2rem;
+    }
+
     /* Remove Streamlit red borders on error/focus */
     .stTextInput > div > input {
         border: 2px solid #ccc !important;
@@ -56,6 +65,11 @@ st.markdown(
     .stTextInput:has(.stTextInput-error) > div > input {
         border: 2px solid #ccc !important;
         box-shadow: none !important;
+    }
+
+    /* Hide 'Press Enter to submit form' text */
+    .stFormSubmitButton > div > p {
+        display: none !important;
     }
     </style>
     """,
@@ -77,7 +91,7 @@ if not st.session_state.logged_in:
     )
     st.markdown(
         """
-        <div style='text-align: center; font-family: Poppins, sans-serif; font-weight: 600; font-size: 2.2rem; line-height: 1.4;'>
+        <div class='login-heading'>
             City of London<br>Raingarden Guide
         </div>
         """,

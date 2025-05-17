@@ -1,9 +1,10 @@
 import streamlit as st
+import base64
 from calculator import calculate_storage, get_required_storage, pass_fail
 
 st.set_page_config(page_title="City of London Raingarden Guide", page_icon="💧")
 
-# Custom fonts and layout styling
+# --- Custom fonts and layout ---
 st.markdown(
     """
     <style>
@@ -33,7 +34,15 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ---- SIMPLE LOGIN ----
+# --- Function to embed SVG logo ---
+def render_svg(svg_path):
+    with open(svg_path, "r") as f:
+        svg = f.read()
+    b64 = base64.b64encode(svg.encode("utf-8")).decode("utf-8")
+    html = f'<img src="data:image/svg+xml;base64,{b64}" width="150"/>'
+    st.markdown(html, unsafe_allow_html=True)
+
+# --- SIMPLE LOGIN ---
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
@@ -50,9 +59,11 @@ if not st.session_state.logged_in:
         st.error("Incorrect username or password")
     st.stop()
 
-# ---- CALCULATOR ----
+# --- LOGO + TOOL TITLE ---
+render_svg("assets/city_of_london_logo.svg")
 st.title("City of London Raingarden Guide")
 
+# --- CALCULATOR ---
 st.subheader("Input Parameters")
 area = st.number_input("Raingarden Area (m²)", min_value=1.0, value=10.0)
 catchment = st.number_input("Catchment Area (m²)", min_value=1.0, value=100.0)
@@ -65,13 +76,11 @@ void_options = {
 void_label = st.selectbox("Attenuation Form", list(void_options.keys()))
 void_ratio = void_options[void_label]
 
-# Whole number, 5 mm step, enforced as integer
 depth = int(st.number_input("Attenuation Depth (mm)", min_value=0, value=300, step=5, format="%d"))
-
 freeboard = st.selectbox("Freeboard (mm)", [150, 200, 250])
 storm_duration = st.selectbox("Storm Duration", ["1hr", "3hr", "6hr"])
 
-# ---- CALCULATIONS ----
+# --- CALCULATIONS ---
 required = get_required_storage(catchment, storm_duration)
 available = calculate_storage(area, void_ratio, depth, freeboard)
 
@@ -88,7 +97,6 @@ if required:
     for label, vol in required.items():
         st.write(f"{label}: {vol:.2f} m³")
 
-    # Updated: styled like other text lines, not as heading or metric
     st.write(f"Available Volume in Raingarden: {available:.2f} m³")
 
     result = pass_fail(required, available)

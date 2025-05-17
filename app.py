@@ -38,7 +38,8 @@ st.markdown(
     .centered-logo {
         display: flex;
         justify-content: center;
-        margin-bottom: 1rem;
+        margin-top: -1rem;
+        margin-bottom: 0.5rem;
     }
     </style>
     """,

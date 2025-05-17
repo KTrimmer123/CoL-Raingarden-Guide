@@ -3,132 +3,66 @@ from calculator import calculate_storage, get_required_storage, pass_fail
 
 st.set_page_config(page_title="City of London Raingarden Guide", page_icon="💧")
 
-# --- Custom fonts and layout styling ---
-st.markdown(
-    """
+# --- Track login state ---
+if "logged_in" not in st.session_state:
+    st.session_state.logged_in = False
+
+# --- CSS styles based on login state ---
+if not st.session_state.logged_in:
+    # GREEN focus styling for login page
+    st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@500;700&display=swap');
-
-    html, body, [class*="css"] {
-        font-family: 'Montserrat', sans-serif;
+    html, body, [class*="css"] { font-family: 'Montserrat', sans-serif; }
+    h1 { font-family: 'Poppins', sans-serif !important; font-size: 1.9rem !important; text-align: center; font-weight: 600 !important; }
+    .login-heading { text-align: center; font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 600; margin-bottom: 2rem; }
+    div[data-baseweb="input"] {
+        border: 2px solid #ccc !important;
+        border-radius: 4px !important;
+        box-shadow: none !important;
     }
-
-    h1 {
-        font-family: 'Poppins', sans-serif !important;
-        font-weight: 600 !important;
-        font-size: 1.9rem !important;
-        text-align: center;
+    div[data-baseweb="input"]:focus-within {
+        border: 2px solid #17E0A7 !important;
+        box-shadow: 0 0 0 0.15rem rgba(23, 224, 167, 0.3) !important;
     }
-
-    h2, h3, h4, h5, h6 {
-        font-family: 'Poppins', sans-serif !important;
-        font-weight: 600 !important;
-    }
-
-    .main {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .stApp {
-        overflow: hidden;
-    }
-
+    </style>
+    """, unsafe_allow_html=True)
+else:
+    # NO focus styling for calculator page
+    st.markdown("""
+    <style>
+    html, body, [class*="css"] { font-family: 'Montserrat', sans-serif; }
+    h1 { font-family: 'Poppins', sans-serif !important; font-size: 1.9rem !important; text-align: center; font-weight: 600 !important; }
     .streamlit-expanderHeader > div {
         font-family: 'Poppins', sans-serif !important;
         font-weight: 600 !important;
         font-size: 1.15rem !important;
     }
-
-    .main .block-container {
-        padding-left: 2rem !important;
-        padding-right: 2rem !important;
-    }
-
-    .centered-logo {
-        display: flex;
-        justify-content: center;
-        margin-top: -2rem;
-        margin-bottom: 1.25rem;
-    }
-
-    .enginuity-logo {
-        display: flex;
-        justify-content: center;
-        margin-top: 1rem;
-    }
-
-    .login-heading {
-        text-align: center;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 600;
-        font-size: 2.5rem;
-        line-height: 1.4;
-        margin-bottom: 2rem;
-    }
-
-    /* === FOCUS & BORDER OVERRIDES === */
-
     div[data-baseweb="input"] {
-        box-shadow: none !important;
         border: 2px solid #ccc !important;
         border-radius: 4px !important;
-    }
-
-    div[data-baseweb="input"]:focus-within {
-        box-shadow: 0 0 0 0.15rem rgba(23, 224, 167, 0.3) !important;
-        border: 2px solid #17E0A7 !important;
-        transition: all 0.2s ease-in-out;
-    }
-
-    .stNumberInput input:focus {
-        outline: none !important;
         box-shadow: none !important;
-        border: none !important;
     }
-
-    .stSelectbox:focus-within {
-        border: 2px solid #17E0A7 !important;
-        box-shadow: 0 0 0 0.15rem rgba(23, 224, 167, 0.3) !important;
-    }
-
-    .stTextInput:has(.stTextInput-error) > div > input {
+    div[data-baseweb="input"]:focus-within {
         border: 2px solid #ccc !important;
         box-shadow: none !important;
     }
-
-    button + p {
-        display: none !important;
+    .stNumberInput input:focus {
+        outline: none !important;
+        border: none !important;
+        box-shadow: none !important;
     }
     </style>
-    """,
-    unsafe_allow_html=True
-)
+    """, unsafe_allow_html=True)
 
-# --- SIMPLE LOGIN ---
-if "logged_in" not in st.session_state:
-    st.session_state.logged_in = False
-
+# --- LOGIN PAGE ---
 if not st.session_state.logged_in:
-    st.markdown(
-        """
-        <div class='centered-logo'>
-            <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/City_of_London_logo.svg.png' width='300'/>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    st.markdown(
-        """
-        <div class='login-heading'>
-            City of London<br>Raingarden Guide
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    st.markdown("""
+    <div class='centered-logo'>
+        <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/City_of_London_logo.svg.png' width='300'/>
+    </div>
+    <div class='login-heading'>City of London<br>Raingarden Guide</div>
+    """, unsafe_allow_html=True)
 
     with st.form("login_form"):
         st.text_input("Username", key="username")
@@ -143,34 +77,31 @@ if not st.session_state.logged_in:
         else:
             st.error("Incorrect username or password")
 
-    st.markdown(
-        """
-        <div class='enginuity-logo'>
-            <div style="text-align: center;">
-                <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/Enginuity_logo.jpg' width='240'/><br>
-                <p style="font-size: 0.85rem; color: #555; margin-top: 0.5rem;">
-                    This tool is the intellectual property of Enginuity and is provided for professional use in support of sustainable drainage and climate-resilient design. It is intended for use by qualified civil engineers.
-                </p>
-            </div>
+    st.markdown("""
+    <div class='enginuity-logo'>
+        <div style="text-align: center;">
+            <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/Enginuity_logo.jpg' width='240'/><br>
+            <p style="font-size: 0.85rem; color: #555; margin-top: 0.5rem;">
+                This tool is the intellectual property of Enginuity and is provided for professional use in support of sustainable drainage and climate-resilient design. It is intended for use by qualified civil engineers.
+            </p>
         </div>
-        """,
-        unsafe_allow_html=True
-    )
+    </div>
+    """, unsafe_allow_html=True)
 
     st.stop()
 
-# --- TOOL TITLE AFTER LOGIN ---
+# --- CALCULATOR PAGE ---
 st.title("City of London Raingarden Guide")
 
-# --- INPUT SECTION ---
 with st.expander("Input Parameters", expanded=False):
     area = st.number_input("Raingarden Area (m²)", min_value=1, value=10, step=1, format="%d")
     catchment = st.number_input("Catchment Area (m²)", min_value=1, value=100, step=1, format="%d")
 
+    # UPDATED VOID RATIOS
     void_options = {
         "Coarse Graded Aggregate": 0.3,
-        "Hydrorock": 0.4,
-        "Geocellular": 0.94
+        "Hydrorock": 0.94,
+        "Geocellular": 0.95
     }
     void_label = st.selectbox("Attenuation Form", list(void_options.keys()))
     void_ratio = void_options[void_label]
@@ -185,14 +116,13 @@ with st.expander("Input Parameters", expanded=False):
 required = get_required_storage(catchment, storm_duration)
 available = calculate_storage(area, void_ratio, depth, freeboard)
 
-# --- Apply infiltration if selected ---
+# --- INFILTRATION ADJUSTMENT ---
 infiltration_rate = 0.036  # m/hr
 storm_durations_hrs = {"1hr": 1, "3hr": 3, "6hr": 6}
 
 if required and include_infiltration:
     duration_hr = storm_durations_hrs[storm_duration]
-    infiltrated_volume = infiltration_rate * area * duration_hr  # m³
-
+    infiltrated_volume = infiltration_rate * area * duration_hr
     for key in required:
         required[key] = max(required[key] - infiltrated_volume, 0)
 
@@ -203,13 +133,12 @@ with st.expander("Catchment Ratio Check", expanded=False):
     else:
         st.error("FAIL: Raingarden area is less than 10% of catchment")
 
-# --- RESULTS SECTION ---
+# --- RESULTS ---
 with st.expander("Results", expanded=False):
     if required:
         st.markdown(f"**Storage Required for {storm_duration} Storm**")
         for label, vol in required.items():
             st.write(f"{label}: {vol:.2f} m³")
-
         st.write(f"Available Volume in Raingarden: {available:.2f} m³")
     else:
         st.warning("Catchment size too large for FEH table.")

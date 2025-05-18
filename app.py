@@ -103,7 +103,9 @@ if not st.session_state.logged_in:
     st.stop()
 
 # --- CALCULATOR PAGE ---
-st.title("City of London Raingarden Guide")
+st.markdown("""
+<div class='login-heading'>City of London<br>Raingarden Guide</div>
+""", unsafe_allow_html=True)
 
 with st.expander("Input Parameters", expanded=False):
     area = st.number_input("Raingarden Area (m²)", min_value=1, value=10, step=1, format="%d")

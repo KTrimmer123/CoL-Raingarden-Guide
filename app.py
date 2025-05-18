@@ -9,6 +9,8 @@ st.set_page_config(page_title="City of London Raingarden Guide", page_icon="💧
 
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
+if "login_trigger" not in st.session_state:
+    st.session_state.login_trigger = False
 
 # --- CSS Styling ---
 if not st.session_state.logged_in:
@@ -99,12 +101,11 @@ if not st.session_state.logged_in:
     <div class='login-heading'>City of London<br>Raingarden Guide</div>
     """, unsafe_allow_html=True)
 
-    with st.form("login_form"):
-        st.text_input("Username", key="username")
-        st.text_input("Password", type="password", key="password")
-        submitted = st.form_submit_button("Login")
+    st.text_input("Username", key="username", on_change=lambda: st.session_state.update(login_trigger=True))
+    st.text_input("Password", type="password", key="password", on_change=lambda: st.session_state.update(login_trigger=True))
 
-    if submitted:
+    if st.session_state.login_trigger:
+        st.session_state.login_trigger = False  # reset
         if st.session_state.username == "city_of_london_rg_tool" and st.session_state.password == "SuDSnotfloods!":
             st.session_state.logged_in = True
             st.rerun()
@@ -127,4 +128,4 @@ if not st.session_state.logged_in:
 # --- CALCULATOR PAGE ---
 st.title("City of London Raingarden Guide")
 
-# (Calculator logic remains unchanged)
+# (Rest of the calculator logic remains unchanged...)

@@ -116,8 +116,7 @@ if not st.session_state.logged_in:
         <div style="text-align: center;">
             <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/Enginuity_logo.jpg' width='216'/><br>
             <p>
-                This tool is the intellectual property of the Enginuity Collective and is made available solely for professional use. It has been developed to support the delivery of sustainable drainage systems (SuDS) and climate-resilient urban design. Use of this tool is intended exclusively for qualified civil engineers and built environment professionals with the appropriate expertise to interpret and apply the outputs responsibly. Unauthorised distribution or misuse is strictly prohibited.<br><br>
-                For troubleshooting or professional advice on the use of this tool, please contact <a href="mailto:info@enginuitydesign.co.uk">info@enginuitydesign.co.uk</a>.
+                This tool is the intellectual property of the Enginuity Collective and is made available solely for professional use. It has been developed to support the delivery of sustainable drainage systems (SuDS) and climate-resilient urban design. Use of this tool is intended exclusively for qualified civil engineers and built environment professionals with the appropriate expertise to interpret and apply the outputs responsibly. Unauthorised distribution or misuse is strictly prohibited. For troubleshooting or professional advice on the use of this tool, please contact <a href="mailto:info@enginuitydesign.co.uk">info@enginuitydesign.co.uk</a>.
             </p>
         </div>
     </div>
@@ -128,4 +127,4 @@ if not st.session_state.logged_in:
 # --- CALCULATOR PAGE ---
 st.title("City of London Raingarden Guide")
 
-# (rest of your calculator logic stays unchanged)
+# (Calculator logic remains unchanged)

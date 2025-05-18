@@ -44,11 +44,14 @@ else:
     <style>
     html, body, [class*="css"] { font-family: 'Montserrat', sans-serif; }
     h1 { font-family: 'Poppins', sans-serif !important; text-align: center; }
-    .streamlit-expanderHeader > div {
+
+    .streamlit-expanderHeader {
         font-family: 'Poppins', sans-serif !important;
-        font-weight: 600 !important;
-        font-size: 1.15rem !important;
+        font-weight: 700 !important;
+        font-size: 1.2rem !important;
+        color: #30322F !important;
     }
+
     div[data-baseweb="input"] {
         border: 2px solid #ccc !important;
         border-radius: 4px !important;
@@ -171,7 +174,7 @@ if required:
 
     for label, vol in required.items():
         df[f"{label} Required (m³)"] = [vol]
-        df[f"{label} Result"] = [result.get(label, "-")]
+        df[f"{label} Result"] = [result.get(label, "-")] if required else "-"
 
     buffer = io.BytesIO()
     with pd.ExcelWriter(buffer, engine="xlsxwriter") as writer:

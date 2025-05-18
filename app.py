@@ -131,7 +131,7 @@ if not st.session_state.logged_in:
 # --- CALCULATOR PAGE ---
 st.title("City of London Raingarden Guide")
 
-with st.expander("Input Parameters", expanded=False):
+with st.expander("Input Parameters", expanded=True):
     area = st.number_input("Raingarden Area (m²)", min_value=1, value=10, step=1, format="%d")
     catchment = st.number_input("Catchment Area (m²)", min_value=1, value=100, step=1, format="%d")
 
@@ -160,7 +160,7 @@ if required and include_infiltration:
         required[key] = max(required[key] - infiltrated_volume, 0)
 
 if required:
-    with st.expander("Catchment Ratio Check", expanded=False):
+    with st.expander("Catchment Ratio Check", expanded=True):
         if area >= 0.1 * catchment:
             st.success("PASS: Raingarden area is at least 10% of catchment")
             catchment_result = "PASS"
@@ -168,13 +168,13 @@ if required:
             st.error("FAIL: Raingarden area is less than 10% of catchment")
             catchment_result = "FAIL"
 
-    with st.expander("Results", expanded=False):
+    with st.expander("Results", expanded=True):
         st.markdown(f"**Storage Required for {storm_duration} Storm**")
         for label, vol in required.items():
             st.write(f"{label}: {vol:.2f} m³")
         st.write(f"Available Volume in Raingarden: {available:.2f} m³")
 
-    with st.expander("Return Period Check", expanded=False):
+    with st.expander("Return Period Check", expanded=True):
         result = pass_fail(required, available)
         for label, verdict in result.items():
             if verdict == "PASS":

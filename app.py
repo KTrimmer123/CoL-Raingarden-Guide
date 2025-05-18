@@ -145,6 +145,9 @@ with st.expander("⚙️ Input Parameters", expanded=True):
     storm_duration = st.selectbox("Storm Duration", ["1hr", "3hr", "6hr"])
     include_infiltration = st.checkbox("Include infiltration in storage calculation", value=False)
 
+    if st.button("🔄 Reset Inputs"):
+        st.experimental_rerun()
+
 required = get_required_storage(catchment, storm_duration)
 available = calculate_storage(area, void_ratio, depth, freeboard)
 

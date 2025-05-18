@@ -4,5 +4,3 @@ numpy
 matplotlib
 openpyxl
 reportlab
-streamlit-authenticator==0.2.3
-PyYAML

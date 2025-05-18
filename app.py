@@ -129,6 +129,9 @@ if not st.session_state.logged_in:
     st.stop()
 
 # --- CALCULATOR PAGE ---
+
+st.markdown("### City of London Raingarden Guide")
+
 with st.expander("⚙️ Input Parameters", expanded=False):
     area = st.number_input("Raingarden Area (m²)", min_value=1, value=10, step=1, format="%d")
     catchment = st.number_input("Catchment Area (m²)", min_value=1, value=100, step=1, format="%d")

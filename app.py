@@ -129,7 +129,6 @@ if not st.session_state.logged_in:
     st.stop()
 
 # --- CALCULATOR PAGE ---
-st.title("City of London Raingarden Guide")
 
 with st.expander("⚙️ Input Parameters", expanded=True):
     area = st.number_input("Raingarden Area (m²)", min_value=1, value=10, step=1, format="%d")

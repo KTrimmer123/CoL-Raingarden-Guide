@@ -21,8 +21,8 @@ if not st.session_state.logged_in:
     .centered-logo {
         display: flex;
         justify-content: center;
-        margin-top: -2rem;
-        margin-bottom: 0.5rem;
+        margin-top: -3rem;
+        margin-bottom: 0rem;
     }
 
     .login-heading {
@@ -31,12 +31,12 @@ if not st.session_state.logged_in:
         font-size: 2.5rem;
         font-weight: 600;
         line-height: 2.2rem;
-        margin-top: 2rem;
-        margin-bottom: 1.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1.25rem;
     }
 
     .enginuity-logo {
-        margin-top: 1.75rem;
+        margin-top: 1.25rem;
     }
 
     .enginuity-logo p {
@@ -114,7 +114,7 @@ if not st.session_state.logged_in:
     st.markdown("""
     <div class='enginuity-logo'>
         <div style="text-align: center;">
-            <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/Enginuity_logo.jpg' width='240'/><br>
+            <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/Enginuity_logo.jpg' width='216'/><br>
             <p>
                 This tool is the intellectual property of the Enginuity Collective and is made available solely for professional use. It has been developed to support the delivery of sustainable drainage systems (SuDS) and climate-resilient urban design. Use of this tool is intended exclusively for qualified civil engineers and built environment professionals with the appropriate expertise to interpret and apply the outputs responsibly. Unauthorised distribution or misuse is strictly prohibited.<br><br>
                 For troubleshooting or professional advice on the use of this tool, please contact <a href="mailto:info@enginuitydesign.co.uk">info@enginuitydesign.co.uk</a>.
@@ -128,4 +128,4 @@ if not st.session_state.logged_in:
 # --- CALCULATOR PAGE ---
 st.title("City of London Raingarden Guide")
 
-# (Calculator logic continues as before...)
+# (rest of your calculator logic stays unchanged)

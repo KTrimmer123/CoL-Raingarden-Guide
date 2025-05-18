@@ -106,11 +106,14 @@ if not st.session_state.logged_in:
 
     if st.session_state.login_trigger:
         st.session_state.login_trigger = False  # reset
-        if st.session_state.username == "city_of_london_rg_tool" and st.session_state.password == "SuDSnotfloods!":
-            st.session_state.logged_in = True
-            st.rerun()
-        else:
-            st.error("Incorrect username or password")
+        username = st.session_state.get("username", "")
+        password = st.session_state.get("password", "")
+        if username and password:
+            if username == "city_of_london_rg_tool" and password == "SuDSnotfloods!":
+                st.session_state.logged_in = True
+                st.rerun()
+            else:
+                st.error("Incorrect username or password")
 
     st.markdown("""
     <div class='enginuity-logo'>

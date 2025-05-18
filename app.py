@@ -41,7 +41,7 @@ if not st.session_state.logged_in:
 
     .enginuity-logo p {
         font-style: italic;
-        font-size: 0.85rem;
+        font-size: 0.75rem;
         color: #555;
         margin-top: 1rem;
     }
@@ -128,4 +128,4 @@ if not st.session_state.logged_in:
 # --- CALCULATOR PAGE ---
 st.title("City of London Raingarden Guide")
 
-# (rest of calculator code unchanged)
+# (Calculator logic continues as before...)

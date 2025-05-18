@@ -6,7 +6,16 @@ with open("raingarden_lookup_data.json") as f:
     data = json.load(f)
 
 lookup_tables = data["tables"]
-columns_to_use = data["columns"]
+
+# Column mapping now includes consistent storage column labels
+columns_to_use = {
+    "1 in 2 year": "2yr storage (m³)",
+    "1 in 5 year": "5yr storage (m³)",
+    "1 in 10 year": "10yr storage (m³)",
+    "1 in 30 year": "30yr storage (m³)",
+    "1 in 100 year": "100yr storage (m³)",
+    "1 in 100 year + CC": "100yr+CC storage (m³)"
+}
 
 def round_up_to_nearest_10(n):
     return int(math.ceil(n / 10.0)) * 10

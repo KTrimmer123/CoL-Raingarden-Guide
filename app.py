@@ -17,13 +17,35 @@ if not st.session_state.logged_in:
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@500;700&display=swap');
     html, body, [class*="css"] { font-family: 'Montserrat', sans-serif; }
     h1 { font-family: 'Poppins', sans-serif !important; text-align: center; }
-    .login-heading { text-align: center; font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 600; margin-bottom: 2rem; }
+
+    .login-heading {
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 600;
+        line-height: 2.2rem;
+        margin-top: -1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
     .centered-logo {
         display: flex;
         justify-content: center;
-        margin-top: -2rem;
-        margin-bottom: 1.25rem;
+        margin-top: -3rem;
+        margin-bottom: 0.5rem;
     }
+
+    .enginuity-logo {
+        margin-top: 2rem;
+    }
+
+    .enginuity-logo p {
+        font-style: italic;
+        font-size: 0.85rem;
+        color: #555;
+        margin-top: 1rem;
+    }
+
     div[data-baseweb="input"] {
         border: 2px solid #ccc !important;
         border-radius: 4px !important;
@@ -93,7 +115,7 @@ if not st.session_state.logged_in:
     <div class='enginuity-logo'>
         <div style="text-align: center;">
             <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/Enginuity_logo.jpg' width='240'/><br>
-            <p style="font-size: 0.85rem; color: #555;">
+            <p>
                 This tool is the intellectual property of the Enginuity Collective and is provided for professional use in support of sustainable drainage and climate-resilient design. It is intended for use by qualified civil engineers.
             </p>
         </div>

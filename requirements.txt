@@ -1,4 +1,6 @@
 streamlit
 pandas
-fpdf
-xlsxwriter
+numpy
+matplotlib
+openpyxl
+reportlab

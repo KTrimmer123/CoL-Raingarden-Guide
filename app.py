@@ -129,6 +129,7 @@ if not st.session_state.logged_in:
     st.stop()
 
 # --- CALCULATOR PAGE ---
+
 with st.expander("⚙️ Input Parameters", expanded=True):
     area = st.number_input("Raingarden Area (m²)", min_value=1, value=10, step=1, format="%d")
     catchment = st.number_input("Catchment Area (m²)", min_value=1, value=100, step=1, format="%d")
@@ -143,10 +144,6 @@ with st.expander("⚙️ Input Parameters", expanded=True):
     freeboard = st.selectbox("Freeboard (mm)", [150, 200, 250])
     storm_duration = st.selectbox("Storm Duration", ["1hr", "3hr", "6hr"])
     include_infiltration = st.checkbox("Include infiltration in storage calculation", value=False)
-
-# ✅ Reset button safely placed outside the expander
-if st.button("🔄 Reset Inputs"):
-    st.experimental_rerun()
 
 required = get_required_storage(catchment, storm_duration)
 available = calculate_storage(area, void_ratio, depth, freeboard)

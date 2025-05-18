@@ -11,7 +11,7 @@ st.set_page_config(page_title="Retrofit Raingarden Calculator", layout="centered
 
 # Display the image at the top
 st.markdown("### Retrofit Raingarden Detail")
-st.image("SuDS Calculator-03.png", use_column_width=True)
+st.image("assets/SuDS Calculator-03.png", use_column_width=True)
 st.markdown("---")
 
 # Title

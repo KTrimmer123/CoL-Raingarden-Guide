@@ -129,7 +129,6 @@ if not st.session_state.logged_in:
     st.stop()
 
 # --- CALCULATOR PAGE ---
-
 st.markdown("### City of London Raingarden Guide")
 
 with st.expander("⚙️ Input Parameters", expanded=False):

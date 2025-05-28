@@ -5,7 +5,7 @@ from fpdf import FPDF
 import pandas as pd
 import io
 
-st.set_page_config(page_title="City of London Raingarden Calculator", page_icon="💧")
+st.set_page_config(page_title="City of London - Raingarden Calculator", page_icon="💧")
 
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False

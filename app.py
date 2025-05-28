@@ -98,7 +98,7 @@ if not st.session_state.logged_in:
     <div class='centered-logo'>
         <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/City_of_London_logo.svg.png' width='300'/>
     </div>
-    <div class='login-heading'>City of London<br>Raingarden Guide</div>
+    <div class='login-heading'>City of London<br>Raingarden Calculator</div>
     """, unsafe_allow_html=True)
 
     st.text_input("Username", key="username", on_change=lambda: st.session_state.update(login_trigger=True))

@@ -5,7 +5,7 @@ from fpdf import FPDF
 import pandas as pd
 import io
 
-st.set_page_config(page_title="City of London - Raingarden Calculator", page_icon="💧")
+st.set_page_config(page_title="City of London - Rain Garden Calculator", page_icon="💧")
 
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
@@ -98,7 +98,7 @@ if not st.session_state.logged_in:
     <div class='centered-logo'>
         <img src='https://raw.githubusercontent.com/KTrimmer123/CoL-Raingarden-Guide/main/assets/City_of_London_logo.svg.png' width='300'/>
     </div>
-    <div class='login-heading'>City of London<br>Raingarden Calculator</div>
+    <div class='login-heading'>City of London<br>Rain Garden Calculator</div>
     """, unsafe_allow_html=True)
 
     st.text_input("Username", key="username", on_change=lambda: st.session_state.update(login_trigger=True))
@@ -129,10 +129,10 @@ if not st.session_state.logged_in:
     st.stop()
 
 # --- CALCULATOR PAGE ---
-st.markdown("### City of London Raingarden Calculator")
+st.markdown("### City of London Rain Garden Calculator")
 
 with st.expander("⚙️ Input Parameters", expanded=False):
-    area = st.number_input("Raingarden Area (m²)", min_value=1, value=10, step=1, format="%d")
+    area = st.number_input("Rain Garden Area (m²)", min_value=1, value=10, step=1, format="%d")
     catchment = st.number_input("Catchment Area (m²)", min_value=1, value=100, step=1, format="%d")
     void_options = {
         "Coarse Graded Aggregate": 0.3,
@@ -160,17 +160,17 @@ if required and include_infiltration:
 if required:
     with st.expander("📐 Catchment Ratio Check", expanded=False):
         if area >= 0.1 * catchment:
-            st.success("PASS: Raingarden area is at least 10% of catchment")
+            st.success("PASS: Rain Garden area is at least 10% of catchment")
             catchment_result = "PASS"
         else:
-            st.error("FAIL: Raingarden area is less than 10% of catchment")
+            st.error("FAIL: Rain Garden area is less than 10% of catchment")
             catchment_result = "FAIL"
 
     with st.expander("🧮 Results", expanded=False):
         st.markdown(f"**Storage Required for {storm_duration} Storm**")
         for label, vol in required.items():
             st.write(f"{label}: {vol:.2f} m³")
-        st.write(f"Available Volume in Raingarden: {available:.2f} m³")
+        st.write(f"Available Volume in Rain Garden: {available:.2f} m³")
 
     with st.expander("🌧️ Return Period Check", expanded=False):
         result = pass_fail(required, available)

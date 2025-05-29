@@ -139,9 +139,9 @@ with st.expander("⚙️ Input Parameters", expanded=False):
         "Hydrorock": 0.94,
         "Geocellular": 0.95
     }
-    void_label = st.selectbox("Attenuation Form", list(void_options.keys()))
+    void_label = st.selectbox("Sub-base Type", list(void_options.keys()))
     void_ratio = void_options[void_label]
-    depth = int(st.number_input("Attenuation Depth (mm)", min_value=0, value=300, step=5, format="%d"))
+    depth = int(st.number_input("Sub-base Depth (mm)", min_value=0, value=300, step=5, format="%d"))
     freeboard = st.selectbox("Freeboard (mm)", [150, 200, 250])
     storm_duration = st.selectbox("Storm Duration", ["1hr", "3hr", "6hr"])
     include_infiltration = st.checkbox("Include infiltration in storage calculation", value=False)
